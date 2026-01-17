@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SDG-12 AI Voice Sustainability Advisor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .box {
+            width: 650px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px #bbb;
+        }
+        h2 {
+            text-align: center;
+            color: green;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #003366;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>🌱 SDG-12 AI Voice Sustainability Advisor</h2>
+
+<!-- WATER QUESTIONS -->
+<h3>💧 Water Usage</h3>
+
+<label>Bathing method</label>
+<select id="bath">
+    <option value="bucket">Bucket</option>
+    <option value="shower">Shower</option>
+</select>
+
+<label>If shower, average time</label>
+<select id="shower_time">
+    <option value="<5">Less than 5 min</option>
+    <option value="5-10">5–10 min</option>
+    <option value="10+">10+ min</option>
+</select>
+
+<label>Tap running while brushing?</label>
+<select id="brush">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>Tap running while washing hands/face?</label>
+<select id="hands">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>Wash utensils with running water?</label>
+<select id="utensils">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>Reuse water (RO / washing) for plants/cleaning?</label>
+<select id="reuse">
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+</select>
+
+<label>Use hose pipe for cleaning?</label>
+<select id="hose">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>Any leaking taps or pipes?</label>
+<select id="leak">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+    <option value="not_sure">Not sure</option>
+</select>
+
+<label>Water tank overflow?</label>
+<select id="overflow">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+    <option value="not_sure">Not sure</option>
+</select>
+
+<label>Laundry method</label>
+<select id="laundry">
+    <option value="machine">Washing machine</option>
+    <option value="hand">Hand wash</option>
+</select>
+
+<!-- ELECTRICITY QUESTIONS -->
+<h3>🔌 Electricity Usage</h3>
+
+<label>Switch off lights/fans when leaving room?</label>
+<select id="lights">
+    <option value="always">Always</option>
+    <option value="sometimes">Sometimes</option>
+    <option value="never">Never</option>
+</select>
+
+<label>LED bulbs used?</label>
+<select id="led">
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+</select>
+
+<label>Chargers plugged in when not charging?</label>
+<select id="charger">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>Phone charged overnight?</label>
+<select id="overnight">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>AC usage</label>
+<select id="ac">
+    <option value="none">No AC</option>
+    <option value="<2">Less than 2 hrs</option>
+    <option value="2-5">2–5 hrs</option>
+    <option value="5+">5+ hrs</option>
+</select>
+
+<label>AC temperature</label>
+<select id="temp">
+    <option value="23-26">23–26°C</option>
+    <option value="19-22">19–22°C</option>
+    <option value="16-18">16–18°C</option>
+</select>
+
+<label>Geyser usage</label>
+<select id="geyser">
+    <option value="none">No geyser</option>
+    <option value="<10">Less than 10 min</option>
+    <option value="10-20">10–20 min</option>
+    <option value="20+">20+ min</option>
+</select>
+
+<label>Keep fridge door open?</label>
+<select id="fridge">
+    <option value="no">No</option>
+    <option value="yes">Yes</option>
+</select>
+
+<label>Washing machine usage</label>
+<select id="wm">
+    <option value="rare">Rare</option>
+    <option value="weekly">Weekly</option>
+    <option value="2-4">2–4 times/week</option>
+    <option value="daily">Daily</option>
+</select>
+
+<label>Turn off TV/PC when not using?</label>
+<select id="tv">
+    <option value="always">Always</option>
+    <option value="sometimes">Sometimes</option>
+    <option value="never">Never</option>
+</select>
+
+<button onclick="advise()">Get AI Advice</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+function speak(text) {
+    let speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "en-US";
+    window.speechSynthesis.speak(speech);
+}
+
+function advise() {
+    let msg = "Here is your sustainability advice. ";
+
+    if (document.getElementById("bath").value === "shower" &&
+        document.getElementById("shower_time").value === "10+") {
+        msg += "Long showers waste a lot of water. Try reducing shower time or use a bucket. ";
+    }
+
+    if (document.getElementById("brush").value === "yes") {
+        msg += "Turn off the tap while brushing your teeth to save water. ";
+    }
+
+    if (document.getElementById("utensils").value === "yes") {
+        msg += "Avoid washing utensils under running water. Use a filled sink instead. ";
+    }
+
+    if (document.getElementById("reuse").value === "no") {
+        msg += "Reusing RO or washing water can significantly reduce water wastage. ";
+    }
+
+    if (document.getElementById("leak").value !== "no") {
+        msg += "Check and fix leaking taps or pipes as soon as possible. ";
+    }
+
+    if (document.getElementById("lights").value !== "always") {
+        msg += "Switch off lights and fans when leaving a room to save electricity. ";
+    }
+
+    if (document.getElementById("charger").value === "yes") {
+        msg += "Unplug chargers when not in use to avoid energy loss. ";
+    }
+
+    if (document.getElementById("ac").value === "5+") {
+        msg += "Limit AC usage and keep temperature around 24 degrees for energy efficiency. ";
+    }
+
+    if (document.getElementById("tv").value !== "always") {
+        msg += "Turn off TV and PC completely when not in use. ";
+    }
+
+    document.getElementById("output").innerText = "AI Advice: " + msg;
+    speak(msg);
+}
+</script>
+
+</body>
+</html>
