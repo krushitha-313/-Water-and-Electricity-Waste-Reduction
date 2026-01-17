@@ -1,36 +1,51 @@
 <!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
 <html>
+
 <head>
+    <!-- Title shown on browser tab -->
     <title>SDG-12 AI Voice Sustainability Advisor</title>
+
     <style>
+        /* Overall page styling */
         body {
-            font-family: Arial, sans-serif;
-            background: #eef2f3;
-            display: flex;
-            justify-content: center;
+            font-family: Arial, sans-serif;     /* Sets font style */
+            background: #eef2f3;               /* Light background color */
+            display: flex;                     /* Enables flexible layout */
+            justify-content: center;           /* Centers content horizontally */
             margin: 20px;
         }
+
+        /* Main white container box */
         .box {
-            width: 650px;
+            width: 650px;                      /* Fixed width */
             background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 12px #bbb;
+            border-radius: 10px;               /* Rounded corners */
+            box-shadow: 0 0 12px #bbb;         /* Soft shadow */
         }
+
+        /* Main heading styling */
         h2 {
             text-align: center;
             color: green;
         }
+
+        /* Label styling */
         label {
             font-weight: bold;
             margin-top: 10px;
             display: block;
         }
+
+        /* Input fields styling */
         select, input, button {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
         }
+
+        /* Button styling */
         button {
             background: green;
             color: white;
@@ -39,6 +54,8 @@
             font-size: 16px;
             margin-top: 15px;
         }
+
+        /* Result text styling */
         .result {
             margin-top: 15px;
             font-weight: bold;
@@ -49,18 +66,22 @@
 
 <body>
 
+<!-- Main container -->
 <div class="box">
+
 <h2>🌱 SDG-12 AI Voice Sustainability Advisor</h2>
 
-<!-- WATER QUESTIONS -->
+<!-- ================= WATER USAGE SECTION ================= -->
 <h3>💧 Water Usage</h3>
 
+<!-- Bathing method selection -->
 <label>Bathing method</label>
 <select id="bath">
     <option value="bucket">Bucket</option>
     <option value="shower">Shower</option>
 </select>
 
+<!-- Shower time selection -->
 <label>If shower, average time</label>
 <select id="shower_time">
     <option value="<5">Less than 5 min</option>
@@ -68,36 +89,42 @@
     <option value="10+">10+ min</option>
 </select>
 
+<!-- Brushing habit -->
 <label>Tap running while brushing?</label>
 <select id="brush">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- Hand washing habit -->
 <label>Tap running while washing hands/face?</label>
 <select id="hands">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- Utensil washing method -->
 <label>Wash utensils with running water?</label>
 <select id="utensils">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- Water reuse question -->
 <label>Reuse water (RO / washing) for plants/cleaning?</label>
 <select id="reuse">
     <option value="yes">Yes</option>
     <option value="no">No</option>
 </select>
 
+<!-- Hose pipe usage -->
 <label>Use hose pipe for cleaning?</label>
 <select id="hose">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- Leakage detection -->
 <label>Any leaking taps or pipes?</label>
 <select id="leak">
     <option value="no">No</option>
@@ -105,6 +132,7 @@
     <option value="not_sure">Not sure</option>
 </select>
 
+<!-- Water tank overflow -->
 <label>Water tank overflow?</label>
 <select id="overflow">
     <option value="no">No</option>
@@ -112,15 +140,17 @@
     <option value="not_sure">Not sure</option>
 </select>
 
+<!-- Laundry method -->
 <label>Laundry method</label>
 <select id="laundry">
     <option value="machine">Washing machine</option>
     <option value="hand">Hand wash</option>
 </select>
 
-<!-- ELECTRICITY QUESTIONS -->
+<!-- ================= ELECTRICITY USAGE SECTION ================= -->
 <h3>🔌 Electricity Usage</h3>
 
+<!-- Light and fan usage -->
 <label>Switch off lights/fans when leaving room?</label>
 <select id="lights">
     <option value="always">Always</option>
@@ -128,24 +158,28 @@
     <option value="never">Never</option>
 </select>
 
+<!-- LED bulb usage -->
 <label>LED bulbs used?</label>
 <select id="led">
     <option value="yes">Yes</option>
     <option value="no">No</option>
 </select>
 
+<!-- Charger usage -->
 <label>Chargers plugged in when not charging?</label>
 <select id="charger">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- Overnight phone charging -->
 <label>Phone charged overnight?</label>
 <select id="overnight">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- AC usage -->
 <label>AC usage</label>
 <select id="ac">
     <option value="none">No AC</option>
@@ -154,6 +188,7 @@
     <option value="5+">5+ hrs</option>
 </select>
 
+<!-- AC temperature -->
 <label>AC temperature</label>
 <select id="temp">
     <option value="23-26">23–26°C</option>
@@ -161,6 +196,7 @@
     <option value="16-18">16–18°C</option>
 </select>
 
+<!-- Geyser usage -->
 <label>Geyser usage</label>
 <select id="geyser">
     <option value="none">No geyser</option>
@@ -169,12 +205,14 @@
     <option value="20+">20+ min</option>
 </select>
 
+<!-- Fridge usage -->
 <label>Keep fridge door open?</label>
 <select id="fridge">
     <option value="no">No</option>
     <option value="yes">Yes</option>
 </select>
 
+<!-- Washing machine frequency -->
 <label>Washing machine usage</label>
 <select id="wm">
     <option value="rare">Rare</option>
@@ -183,6 +221,7 @@
     <option value="daily">Daily</option>
 </select>
 
+<!-- TV / PC usage -->
 <label>Turn off TV/PC when not using?</label>
 <select id="tv">
     <option value="always">Always</option>
@@ -190,22 +229,27 @@
     <option value="never">Never</option>
 </select>
 
+<!-- Button to generate advice -->
 <button onclick="advise()">Get AI Advice</button>
 
+<!-- Output area -->
 <div class="result" id="output"></div>
 
 </div>
 
 <script>
+/* Function to convert text into voice */
 function speak(text) {
-    let speech = new SpeechSynthesisUtterance(text);
-    speech.lang = "en-US";
-    window.speechSynthesis.speak(speech);
+    let speech = new SpeechSynthesisUtterance(text);  // Create speech object
+    speech.lang = "en-US";                            // Language
+    window.speechSynthesis.speak(speech);             // Speak the text
 }
 
+/* Main AI advice logic */
 function advise() {
     let msg = "Here is your sustainability advice. ";
 
+    // Water-saving advice conditions
     if (document.getElementById("bath").value === "shower" &&
         document.getElementById("shower_time").value === "10+") {
         msg += "Long showers waste a lot of water. Try reducing shower time or use a bucket. ";
@@ -227,6 +271,7 @@ function advise() {
         msg += "Check and fix leaking taps or pipes as soon as possible. ";
     }
 
+    // Electricity-saving advice conditions
     if (document.getElementById("lights").value !== "always") {
         msg += "Switch off lights and fans when leaving a room to save electricity. ";
     }
@@ -243,7 +288,10 @@ function advise() {
         msg += "Turn off TV and PC completely when not in use. ";
     }
 
+    // Display advice text
     document.getElementById("output").innerText = "AI Advice: " + msg;
+
+    // Speak advice aloud
     speak(msg);
 }
 </script>
